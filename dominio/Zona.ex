@@ -9,9 +9,9 @@ defmodule Zona do
     defstruct nombre: "", personas_atendidas: 0
   end
 
-  # -----------------------------------
+
   # Creación y modificación (retornan {:ok, ...} o {:error, ...})
-  # -----------------------------------
+
 
   def crear(codigo, nombre, nivel, personas \\ 0) do
     with :ok <- validar_texto(codigo, "código"),
@@ -66,9 +66,9 @@ defmodule Zona do
     end
   end
 
-  # -----------------------------------
+
   # Estadísticas (recursivas sobre zona -> sectores -> puntos)
-  # -----------------------------------
+
 
   def total_en_sectores(%Zona{sectores: sectores}), do: sumar_afectadas(sectores)
   def total_atendidas(%Zona{sectores: sectores}), do: sumar_atendidas(sectores)
@@ -98,9 +98,9 @@ defmodule Zona do
       " - Personas atendidas: #{e.atendidas}\n"
   end
 
-  # -----------------------------------
+
   # Funciones recursivas privadas
-  # -----------------------------------
+
 
   # Recorre la lista de sectores buscando el nombre
   defp existe_sector?([], _nombre), do: false
@@ -152,9 +152,9 @@ defmodule Zona do
     length(sector.puntos) + contar_puntos_sectores(resto)
   end
 
-  # -----------------------------------
+
   # Validaciones
-  # -----------------------------------
+
 
   defp validar_texto(texto, campo) when is_binary(texto) do
     case String.trim(texto) do

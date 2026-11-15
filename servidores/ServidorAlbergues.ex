@@ -1,9 +1,9 @@
 defmodule ServidorAlbergues do
   use GenServer
 
-  # -----------------------------------
+
   # API pública
-  # -----------------------------------
+
 
   def start_link(_opciones \\ []) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
@@ -32,9 +32,9 @@ defmodule ServidorAlbergues do
   # Albergues con mayor porcentaje de ocupación (de mayor a menor)
   def reporte_ocupacion(limite \\ 3), do: GenServer.call(__MODULE__, {:reporte, limite})
 
-  # -----------------------------------
+
   # Callbacks
-  # -----------------------------------
+
 
   @impl true
   def init(_estado), do: {:ok, cargar()}
@@ -105,9 +105,9 @@ defmodule ServidorAlbergues do
     {:reply, lista, albergues}
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   defp buscar(albergues, codigo) do
     case Map.fetch(albergues, codigo) do
@@ -125,9 +125,9 @@ defmodule ServidorAlbergues do
       {:error, razon} -> {:reply, {:error, razon}, albergues}
     end
   end
-    # -----------------------------------
+
   # Persistencia: albergues.txt y sus archivos asociados
-  # -----------------------------------
+
 
   defp guardar(albergues) do
     lista = albergues |> Map.values() |> Util2.ordenar(:asc, & &1.codigo)

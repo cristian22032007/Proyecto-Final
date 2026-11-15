@@ -90,9 +90,9 @@ defmodule ServidorRecursos do
     {:reply, Map.values(recursos), recursos}
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   defp buscar(recursos, codigo) do
     case Map.fetch(recursos, codigo) do
@@ -143,9 +143,9 @@ defmodule ServidorRecursos do
     end
   end
 
-  # -----------------------------------
+
   # Persistencia: recursos.txt y movimientos_recursos.txt
-  # -----------------------------------
+
 
   defp guardar(recursos) do
     lista = recursos |> Map.values() |> Util2.ordenar(:asc, & &1.codigo)

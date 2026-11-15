@@ -1,9 +1,9 @@
 defmodule ServidorNecesidades do
   use GenServer
 
-  # -----------------------------------
+
   # API pública
-  # -----------------------------------
+
 
   def start_link(_opciones \\ []) do
     estado_inicial = %{necesidades: %{}, contador: 0}
@@ -29,9 +29,9 @@ defmodule ServidorNecesidades do
   def cambiar_estado(id, nuevo_estado),
     do: GenServer.call(__MODULE__, {:cambiar_estado, id, nuevo_estado})
 
-  # -----------------------------------
+
   # Callbacks
-  # -----------------------------------
+
 
   @impl true
   def init(_estado), do: {:ok, cargar()}
@@ -100,9 +100,9 @@ defmodule ServidorNecesidades do
     end
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   defp generar_id(numero) do
     "N" <> (numero |> Integer.to_string() |> String.pad_leading(3, "0"))
@@ -147,9 +147,9 @@ defmodule ServidorNecesidades do
 
   defp devolver_recurso(_necesidad, _nuevo_estado), do: :ok
 
-    # -----------------------------------
+
   # Persistencia: necesidades.txt y cambios_necesidades.txt
-  # -----------------------------------
+
 
   defp guardar(estado) do
     lista = estado.necesidades |> Map.values() |> Util2.ordenar(:asc, & &1.id)

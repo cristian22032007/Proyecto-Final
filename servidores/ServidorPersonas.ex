@@ -1,9 +1,9 @@
 defmodule ServidorPersonas do
   use GenServer
 
-  # -----------------------------------
+
   # API pública
-  # -----------------------------------
+
 
   def start_link(_opciones \\ []) do
     estado_inicial = %{personas: %{}, mensajes: %{}, contador_personas: 0, contador_mensajes: 0}
@@ -33,9 +33,9 @@ defmodule ServidorPersonas do
 
   def marcar_mensaje(id, estado), do: GenServer.call(__MODULE__, {:marcar_mensaje, id, estado})
 
-  # -----------------------------------
+
   # Callbacks
-  # -----------------------------------
+
 
   @impl true
   def init(_estado), do: {:ok, cargar()}
@@ -142,9 +142,9 @@ defmodule ServidorPersonas do
     end
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   defp generar_id(prefijo, numero) do
     prefijo <> (numero |> Integer.to_string() |> String.pad_leading(3, "0"))
@@ -177,9 +177,9 @@ defmodule ServidorPersonas do
       _otro, acc -> acc
     end)
   end
-  # -----------------------------------
+
   # Persistencia: personas.txt, cambios_personas.txt y mensajes.txt
-  # -----------------------------------
+
 
   defp guardar(estado) do
     personas = estado.personas |> Map.values() |> Util2.ordenar(:asc, & &1.id)

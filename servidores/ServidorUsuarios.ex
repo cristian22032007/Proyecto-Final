@@ -1,9 +1,9 @@
 defmodule ServidorUsuarios do
   use GenServer
 
-  # -----------------------------------
+
   # API pública (lo que usa el resto del sistema)
-  # -----------------------------------
+
 
   def start_link(_opciones \\ []) do
     estado_inicial = %{usuarios: %{}, conectados: MapSet.new(), actividad: []}
@@ -24,9 +24,9 @@ defmodule ServidorUsuarios do
 
   def listar_actividad(usuario), do: GenServer.call(__MODULE__, {:listar_actividad, usuario})
 
-  # -----------------------------------
+
   # Callbacks
-  # -----------------------------------
+
 
   @impl true
   def init(_estado), do: {:ok, cargar()}
@@ -86,9 +86,9 @@ defmodule ServidorUsuarios do
     {:noreply, nuevo}
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   # Si el usuario no existe se registra automáticamente
   defp registrar_y_conectar(estado, usuario, contrasena, tipo, zona) do
@@ -126,9 +126,9 @@ defmodule ServidorUsuarios do
     registro = {DateTime.utc_now() |> DateTime.to_string(), usuario, accion}
     %{estado | actividad: [registro | estado.actividad]}
   end
-    # -----------------------------------
+
   # Persistencia: usuarios.txt y actividad.txt
-  # -----------------------------------
+
 
   defp guardar(estado) do
     usuarios =

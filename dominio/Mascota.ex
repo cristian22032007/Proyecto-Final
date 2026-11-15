@@ -31,9 +31,9 @@ defmodule Mascota do
 
   def umbral, do: @umbral
 
-  # -----------------------------------
+
   # Creación
-  # -----------------------------------
+
 
   def crear(id, tipo, especie, nombre, caracteristicas, color, tamano, zona, contacto) do
     with :ok <- validar_texto(especie, "especie"),
@@ -59,9 +59,9 @@ defmodule Mascota do
     end
   end
 
-  # -----------------------------------
+
   # Conversiones
-  # -----------------------------------
+
 
   def convertir_tipo(tipo) when is_atom(tipo), do: convertir_tipo(Atom.to_string(tipo))
 
@@ -95,9 +95,9 @@ defmodule Mascota do
     end
   end
 
-  # -----------------------------------
+
   # Cambios de estado
-  # -----------------------------------
+
 
   def cambiar_estado(%Mascota{id: id, estado: :resuelta}, _nuevo) do
     {:error, "La mascota #{id} ya está resuelta y no se puede cerrar dos veces"}
@@ -118,9 +118,9 @@ defmodule Mascota do
     end
   end
 
-  # -----------------------------------
+
   # Algoritmo de similitud (0 a 100)
-  # -----------------------------------
+
 
   # Si la especie es distinta, no puede haber coincidencia
   def calcular_similitud(%Mascota{especie: a}, %Mascota{especie: b}) when a != b, do: 0
@@ -192,9 +192,9 @@ defmodule Mascota do
     |> MapSet.new()
   end
 
-  # -----------------------------------
+
   # Funciones auxiliares
-  # -----------------------------------
+
 
   defp normalizar(texto), do: texto |> String.trim() |> String.downcase()
 

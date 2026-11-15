@@ -1,9 +1,9 @@
 defmodule ServidorMascotas do
   use GenServer
 
-  # -----------------------------------
+
   # API pública
-  # -----------------------------------
+
 
   def start_link(_opciones \\ []) do
     estado_inicial = %{mascotas: %{}, contador: 0, coincidencias: []}
@@ -30,9 +30,9 @@ defmodule ServidorMascotas do
 
   def listar_coincidencias, do: GenServer.call(__MODULE__, :listar_coincidencias)
 
-  # -----------------------------------
+
   # Callbacks
-  # -----------------------------------
+
 
   @impl true
   def init(_estado), do: {:ok, cargar()}
@@ -138,9 +138,9 @@ defmodule ServidorMascotas do
     {:reply, Enum.reverse(estado.coincidencias), estado}
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   defp generar_id(numero) do
     "MA" <> (numero |> Integer.to_string() |> String.pad_leading(3, "0"))
@@ -201,9 +201,9 @@ defmodule ServidorMascotas do
         acc
     end)
   end
-  # -----------------------------------
+
   # Persistencia: mascotas.txt y coincidencias.txt
-  # -----------------------------------
+
 
   defp guardar(estado) do
     lista = estado.mascotas |> Map.values() |> Util2.ordenar(:asc, & &1.id)

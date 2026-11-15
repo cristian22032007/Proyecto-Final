@@ -26,9 +26,9 @@ defmodule Persona do
     reunificada: []
   }
 
-  # -----------------------------------
+
   # Creación
-  # -----------------------------------
+
 
   def crear(id, documento, nombre, edad, zona, estado \\ "reportada") do
     with :ok <- validar_texto(documento, "documento"),
@@ -49,9 +49,9 @@ defmodule Persona do
     end
   end
 
-  # -----------------------------------
+
   # Estados
-  # -----------------------------------
+
 
   def convertir_estado(estado) when is_atom(estado), do: convertir_estado(Atom.to_string(estado))
 
@@ -87,9 +87,9 @@ defmodule Persona do
     {DateTime.utc_now() |> DateTime.to_string(), anterior, nuevo}
   end
 
-  # -----------------------------------
+
   # Validaciones
-  # -----------------------------------
+
 
   defp validar_texto(texto, campo) when is_binary(texto) do
     case String.trim(texto) do

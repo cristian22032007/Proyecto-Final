@@ -9,9 +9,9 @@ defmodule Albergue do
             necesidades: MapSet.new(),
             historial: []
 
-  # -----------------------------------
+
   # Creación
-  # -----------------------------------
+
 
   # La ocupación inicial (ocupacion_base) representa a las personas que ya
   # estaban alojadas antes de usar el sistema y no tienen documento registrado.
@@ -32,9 +32,9 @@ defmodule Albergue do
     end
   end
 
-  # -----------------------------------
+
   # Consultas (funciones puras)
-  # -----------------------------------
+
 
   def ocupacion(%Albergue{ocupacion_base: base, personas: personas}) do
     base + MapSet.size(personas)
@@ -48,9 +48,9 @@ defmodule Albergue do
     Float.round(ocupacion(albergue) * 100 / capacidad, 1)
   end
 
-  # -----------------------------------
+
   # Ingreso y salida de personas
-  # -----------------------------------
+
 
   def registrar_ingreso(%Albergue{} = albergue, documento) do
     with :ok <- validar_texto(documento, "documento"),
@@ -80,9 +80,9 @@ defmodule Albergue do
     end
   end
 
-  # -----------------------------------
+
   # Recursos y necesidades asociados
-  # -----------------------------------
+
 
   def asociar_recurso(%Albergue{} = albergue, codigo_recurso) do
     with :ok <- validar_texto(codigo_recurso, "código del recurso") do
@@ -104,9 +104,9 @@ defmodule Albergue do
     end
   end
 
-  # -----------------------------------
+
   # Resumen
-  # -----------------------------------
+
 
   def generar_resumen(%Albergue{} = albergue) do
     "Albergue #{albergue.codigo} (#{albergue.nombre}) - #{albergue.zona}\n" <>
@@ -124,9 +124,9 @@ defmodule Albergue do
     end
   end
 
-  # -----------------------------------
+
   # Funciones auxiliares
-  # -----------------------------------
+
 
   defp movimiento(tipo, documento) do
     {DateTime.utc_now() |> DateTime.to_string(), tipo, documento}

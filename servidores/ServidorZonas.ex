@@ -1,9 +1,9 @@
 defmodule ServidorZonas do
   use GenServer
 
-  # -----------------------------------
+
   # API pública
-  # -----------------------------------
+
 
   def start_link(_opciones \\ []) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
@@ -27,9 +27,9 @@ defmodule ServidorZonas do
 
   def listar, do: GenServer.call(__MODULE__, :listar)
 
-  # -----------------------------------
+
   # Callbacks
-  # -----------------------------------
+
 
   @impl true
   def init(_estado), do: {:ok, cargar()}
@@ -79,9 +79,9 @@ defmodule ServidorZonas do
     {:reply, Map.values(zonas), zonas}
   end
 
-  # -----------------------------------
+
   # Funciones privadas
-  # -----------------------------------
+
 
   defp buscar_zona(zonas, codigo) do
     case Map.fetch(zonas, codigo) do
@@ -99,9 +99,9 @@ defmodule ServidorZonas do
       {:error, razon} -> {:reply, {:error, razon}, zonas}
     end
   end
-  # -----------------------------------
+
   # Persistencia: zonas.txt, sectores_zonas.txt y puntos_zonas.txt
-  # -----------------------------------
+
 
   defp guardar(zonas) do
     lista = zonas |> Map.values() |> Util2.ordenar(:asc, & &1.codigo)

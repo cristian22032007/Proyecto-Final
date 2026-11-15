@@ -35,9 +35,9 @@ defmodule Necesidad do
     cancelada: []
   }
 
-  # -----------------------------------
+
   # Creación
-  # -----------------------------------
+
 
   def crear(id, tipo, cantidad, prioridad, zona, descripcion, responsable) do
     with :ok <- validar_texto(zona, "zona"),
@@ -59,9 +59,9 @@ defmodule Necesidad do
     end
   end
 
-  # -----------------------------------
+
   # Conversiones
-  # -----------------------------------
+
 
   def convertir_tipo(tipo) when is_atom(tipo), do: convertir_tipo(Atom.to_string(tipo))
 
@@ -99,9 +99,9 @@ defmodule Necesidad do
 
   def valor_prioridad(prioridad), do: Map.fetch!(@prioridades, prioridad)
 
-  # -----------------------------------
+
   # Cambios de estado
-  # -----------------------------------
+
 
   # Una necesidad cerrada ya no admite cambios
   def cambiar_estado(%Necesidad{id: id, estado: estado}, _nuevo)
@@ -124,9 +124,9 @@ defmodule Necesidad do
     end
   end
 
-  # -----------------------------------
+
   # Validaciones
-  # -----------------------------------
+
 
   defp validar_texto(texto, campo) when is_binary(texto) do
     case String.trim(texto) do
