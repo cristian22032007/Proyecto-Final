@@ -10,9 +10,9 @@ defmodule PruebasEmergencias do
     :ok
   end
 
-  # -----------------------------------
+
   # Usuarios
-  # -----------------------------------
+
 
   describe "usuarios" do
     test "se registra automáticamente y valida la contraseña" do
@@ -41,9 +41,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Zonas (recursividad sobre zona -> sectores -> puntos)
-  # -----------------------------------
+
 
   describe "zonas" do
     test "las estadísticas recorren sectores y puntos" do
@@ -77,9 +77,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Recursos (conflicto concurrente obligatorio)
-  # -----------------------------------
+
 
   describe "recursos" do
     test "100 solicitudes simultáneas nunca superan el inventario" do
@@ -125,9 +125,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Necesidades
-  # -----------------------------------
+
 
   describe "necesidades" do
     test "dos asignaciones simultáneas sobre 50 litros: solo una se confirma" do
@@ -192,9 +192,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Personas y mensajes
-  # -----------------------------------
+
 
   describe "personas y mensajes" do
     test "5 registros simultáneos del mismo documento: solo uno se acepta" do
@@ -239,9 +239,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Mascotas
-  # -----------------------------------
+
 
   describe "mascotas" do
     test "el puntaje de similitud suma los atributos coincidentes" do
@@ -297,9 +297,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Albergues
-  # -----------------------------------
+
 
   describe "albergues" do
     test "20 ingresos simultáneos a un albergue de 5 cupos admiten exactamente 5" do
@@ -352,9 +352,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # Persistencia y supervisión
-  # -----------------------------------
+
 
   describe "persistencia y supervisión" do
     test "los datos sobreviven al reinicio de todos los servidores" do
@@ -401,9 +401,9 @@ defmodule PruebasEmergencias do
     end
   end
 
-  # -----------------------------------
+
   # CLI
-  # -----------------------------------
+
 
   describe "cli" do
     test "divide la línea respetando las comillas" do

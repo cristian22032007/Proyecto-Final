@@ -75,9 +75,9 @@ defmodule Almacen do
     end
   end
 
-  # -----------------------------------
+
   # Escapes
-  # -----------------------------------
+
 
   def codificar(campos) do
     campos
